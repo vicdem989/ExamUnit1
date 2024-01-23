@@ -52,4 +52,19 @@ bool AtGoal()
 
 #region Helper functions
 
+bool TurnRightCheck() {
+    Turn();
+    if(Peek) 
+        return true;
+    return false;
+}
+
+bool TurnLeftCHeck() {
+    Turn();
+    Turn();
+    if(Peek)
+        return true;
+    return false;
+}
+
 #end region
