@@ -1,17 +1,4 @@
-// Your program should start at this line.
-/*
-Example:
-Move();
-Move();
-Move();
-Turn();
-Move();
-Move();
-Turn();
-Turn();
-Turn();
-Move();
-*/
+
 
 ///While not at goal
 ///check if cell infront is open
@@ -19,6 +6,27 @@ Move();
 /// else turn right
 /// if check still false, turn other way twice (left)
 /// if still false, go back until no open space
+
+
+while(!AtGoal) {
+    if(Peek) {
+        Move();
+    } else {
+        if(TurnRightCheck())
+            Move();
+        else if (TurnLeftCHeck()) 
+            Move();
+        else {
+            MoveBack();
+            if(TurnRightCheck())
+                Move();
+            else {
+                TurnLeftCHeck();
+                Move();
+            }
+        }
+    }
+}
 
 
 
@@ -31,7 +39,7 @@ void Move()
     // Moves the car 1 cell in the direction it is heading. 
 }
 
-void Turn()
+void Turn(int amountTurns)
 {
     // Turns the car 90 deg clockwise.
 }
@@ -53,27 +61,24 @@ bool AtGoal()
 #region Helper functions
 
 bool TurnRightCheck() {
-    Turn();
+    Turn(1);
     if(Peek) 
         return true;
     return false;
 }
 
 bool TurnLeftCHeck() {
-    Turn();
-    Turn();
+    Turn(2);
     if(Peek)
         return true;
     return false;
 }
 
 void MoveBack() {
-    Turn();
-    Turn();
+    Turn(2);
     while(Peek) 
         move();
-    Turn();
-    Turn();
+    Turn(2);
 }
 
 #end region
