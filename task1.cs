@@ -6,8 +6,18 @@
 ///check if cell infront is open
 /// if check == true => go
 /// else turn right
-/// if check still false, turn other way twice (left)
-/// if still false, go back until no open space
+
+
+while(!AtGoal) {
+    if(Peek) 
+        Move();
+    else {
+        if(TurnRightCheck())
+            Move();
+        else if (TurnLeftCHeck()) 
+            Move();
+    }
+}
 
 
 
