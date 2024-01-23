@@ -9,9 +9,9 @@
 
 
 while(!AtGoal) {
-    if(Peek) {
+    if(Peek) 
         Move();
-    } else {
+    else {
         if(TurnRightCheck())
             Move();
         else if (TurnLeftCHeck()) 
