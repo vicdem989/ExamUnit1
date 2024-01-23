@@ -7,6 +7,20 @@
 /// if check still false, turn other way twice (left)
 
 
+while(!AtGoal) {
+    if(Peek) {
+        Move();
+    } else {
+        if(TurnRightCheck())
+            Move();
+        else {
+            Turn(2);
+            Move();
+        }
+    }
+}
+
+
 #region Basic functions
 // These functions are just her to make your intelisense work. 
 // They only have a conceptual function.
