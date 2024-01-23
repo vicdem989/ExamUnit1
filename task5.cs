@@ -67,4 +67,13 @@ bool TurnLeftCHeck() {
     return false;
 }
 
+void MoveBack() {
+    Turn();
+    Turn();
+    while(Peek) 
+        move();
+    Turn();
+    Turn();
+}
+
 #end region
