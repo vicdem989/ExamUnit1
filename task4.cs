@@ -31,14 +31,9 @@ void Move()
     // Moves the car 1 cell in the direction it is heading. 
 }
 
-void TurnRight()
+void Turn()
 {
     // Turns the car 90 deg clockwise.
-}
-
-void TurnLeft()
-{
-    // Turns the car 90 deg counter clockwise.
 }
 
 bool Peek()
@@ -57,15 +52,21 @@ bool AtGoal()
 
 #region Helper functions
 
+void TurnLeft() {
+    Turn();
+    Turn();
+    Turn();
+}
+
 bool TurnRightCheck() {
-    TurnRight();
+    Turn();
     if(Peek) 
         return true;
     return false;
 }
 
 bool TurnLeftCHeck() {
-    TurnLeft()
+    TurnLeft();
     if(Peek)
         return true;
     return false;
