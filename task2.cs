@@ -1,18 +1,26 @@
 
+/// Hug right side of wall until at the end
+/// If right no peek, check front
+/// If front no peek check left
+/// If left no peek, turn left again and Move 1
+/// Rpeeat
 
-///While not at goal
-///check if cell infront is open
-/// if not, turn right and go
 
 while(!AtGoal) {
-    if(Peek) {
+    if(TurnRightCheck)
         Move();
-    } else {
-        Turn();
+    else {
+        if(TurnCheckFront)
+            Move();
+        else if (TurnLeftCHeck) 
+            Move();
+        else {
+            TurnLeft();
+            Move();
+        }
     }
+
 }
-
-
 
 #region Basic functions
 // These functions are just her to make your intelisense work. 
@@ -43,5 +51,36 @@ bool AtGoal()
 #endregion
 
 #region Helper functions
+
+void MoreTurns(int amountTurns) {
+    for(int i = 0; i < amountTurns; i++) {
+        Turn();
+    }
+}
+
+void TurnLeft() {
+    MoreTurns(3);
+}
+
+bool TurnRightCheck() {
+    Turn();
+    if(Peek) 
+        return true;
+    return false;
+}
+
+bool TurnLeftCHeck() {
+    TurnLeft();
+    if(Peek)
+        return true;
+    return false;
+}
+
+bool TurnCheckFront() {
+    TurnLeft();
+    if(Peek)
+        return true;
+    return false;
+}
 
 #end region

@@ -52,10 +52,14 @@ bool AtGoal()
 
 #region Helper functions
 
+void MoreTurns(int amountTurns) {
+    for(int i = 0; i < amountTurns; i++) {
+        Turn();
+    }
+}
+
 void TurnLeft() {
-    Turn();
-    Turn();
-    Turn();
+    MoreTurns(3);
 }
 
 bool TurnRightCheck() {

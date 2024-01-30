@@ -1,25 +1,26 @@
 
-
-
-
-///While not at goal
-///check if cell infront is open
-/// if check == true => go
-/// else turn right
+/// Hug right side of wall until at the end
+/// If right no peek, check front
+/// If front no peek check left
+/// If left no peek, turn left again and Move 1
+/// Rpeeat
 
 
 while(!AtGoal) {
-    if(Peek) 
+    if(TurnRightCheck)
         Move();
     else {
-        if(TurnRightCheck())
+        if(TurnCheckFront)
             Move();
-        else if (TurnLeftCHeck()) 
+        else if (TurnLeftCHeck) 
             Move();
+        else {
+            TurnLeft();
+            Move();
+        }
     }
+
 }
-
-
 
 #region Basic functions
 // These functions are just her to make your intelisense work. 
@@ -30,7 +31,7 @@ void Move()
     // Moves the car 1 cell in the direction it is heading. 
 }
 
-void Turn(int amountTurns)
+void Turn()
 {
     // Turns the car 90 deg clockwise.
 }
@@ -51,15 +52,32 @@ bool AtGoal()
 
 #region Helper functions
 
+void MoreTurns(int amountTurns) {
+    for(int i = 0; i < amountTurns; i++) {
+        Turn();
+    }
+}
+
+void TurnLeft() {
+    MoreTurns(3);
+}
+
 bool TurnRightCheck() {
-    Turn(1);
+    Turn();
     if(Peek) 
         return true;
     return false;
 }
 
 bool TurnLeftCHeck() {
-    Turn(2);
+    TurnLeft();
+    if(Peek)
+        return true;
+    return false;
+}
+
+bool TurnCheckFront() {
+    TurnLeft();
     if(Peek)
         return true;
     return false;
